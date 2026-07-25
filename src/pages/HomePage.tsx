@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowRight, Bean, Coffee, Droplets, Flame, MoveRight, Sparkles, Wind } from 'lucide-react'
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { Footer } from '../components/Layout'
 
 type Props = { onNavigate: (to: string) => void }
@@ -23,7 +23,7 @@ export function HomePage({ onNavigate }: Props) {
       <div className="principle-grid">{principles.map((item, index) => <article key={item.text}><span>0{index + 1}</span><div className="principle-icon">{item.icon}</div><h3>{item.title}<br />{item.text}</h3></article>)}</div>
     </section>
     <section className="home-scene blend-scene">
-      <div className="blend-header"><SceneHeading eyebrow="FOUR MOMENTS" title="하루의 모든 장면에<br />커피가 있습니다" /><p>하루에 정답은 없어요.<br />지금의 기분에 가장 가까운 한 잔을 고르세요.</p></div>
+      <div className="blend-header"><SceneHeading eyebrow="FOUR MOMENTS" title={<>하루의 모든 장면에<br />커피가 있습니다</>} /><p>하루에 정답은 없어요.<br />지금의 기분에 가장 가까운 한 잔을 고르세요.</p></div>
       <div className="blend-list">{blends.map(([name, desc, color], index) => <article key={name} style={{ '--blend': color } as CSSProperties}><span>0{index + 1}</span><div><h3>{name}</h3><p>{desc}</p></div><MoveRight /></article>)}</div>
     </section>
     <section className="home-scene craft-scene">
@@ -35,5 +35,5 @@ export function HomePage({ onNavigate }: Props) {
     <Footer />
   </>
 }
-function SceneHeading({ eyebrow, title }: { eyebrow: string; title: string }) { return <header className="scene-heading"><p>{eyebrow}</p><h2>{title}</h2></header> }
+function SceneHeading({ eyebrow, title }: { eyebrow: string; title: ReactNode }) { return <header className="scene-heading"><p>{eyebrow}</p><h2>{title}</h2></header> }
 export { SceneHeading as SectionHeading }
