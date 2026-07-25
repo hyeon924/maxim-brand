@@ -36,3 +36,4 @@ export function HomePage({ onNavigate }: Props) {
   </>
 }
 function SceneHeading({ eyebrow, title }: { eyebrow: string; title: string }) { return <header className="scene-heading"><p>{eyebrow}</p><h2>{title}</h2></header> }
+export { SceneHeading as SectionHeading }
