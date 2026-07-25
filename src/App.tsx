@@ -16,8 +16,8 @@ export default function App() {
   const navigate = (to: string) => { history.pushState({}, '', to); setPath(to); scrollTo({ top: 0, behavior: 'smooth' }) }
   const isHistory = path === '/history'
   return <><Header onNavigate={navigate} currentPath={path} />
-    <main>{isHistory ? <HistoryPage /> : <HomePage onNavigate={navigate} />}</main>
-    <Footer />
+    <main className={isHistory ? 'content-main' : 'fullpage-main'}>{isHistory ? <HistoryPage /> : <HomePage onNavigate={navigate} />}</main>
+    {isHistory && <Footer />}
     <button className={`back-to-top ${showTop ? 'is-visible' : ''}`} onClick={() => scrollTo({ top: 0, behavior: 'smooth' })} aria-label="맨 위로"><ArrowUp size={19} /></button>
   </>
 }
